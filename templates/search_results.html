@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <title>Todas as Pesquisas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Todas as Pesquisas</h1>
+    </header>
+    <div class="container">
+        {% for search in searches %}
+        <div class="result">
+            <p>Cidade: {{ search["Nome da Cidade"] }}</p>
+            <p>Temperatura Máxima: {{ search["Temperatura Maxima"] }} °C</p>
+            <p>Temperatura Mínima: {{ search["Temperatura Minima"] }} °C</p>
+            <p>Direção do Vento: {{ search["Direção do vento"] }}</p>
+            <p>Velocidade do Vento: {{ search["Velocidade do vento"] }}</p>
+            <p>Data da Pesquisa: {{ search["data_pesquisa"] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="/">Voltar</a>
+</body>
+</html>

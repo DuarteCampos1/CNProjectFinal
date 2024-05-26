@@ -1,0 +1,234 @@
+[
+    {
+        "Nome da Cidade": "Santarém",
+        "Temperatura Maxima": 16,
+        "Temperatura Minima": 6,
+        "Direção do vento": "Oeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-25 23:38:28"
+    },
+    {
+        "Nome da Cidade": "Setúbal",
+        "Temperatura Maxima": 25,
+        "Temperatura Minima": 9,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-25 23:51:51"
+    },
+    {
+        "Nome da Cidade": "Évora",
+        "Temperatura Maxima": 26,
+        "Temperatura Minima": 11,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Fraco",
+        "data_pesquisa": "2024-05-25 23:53:26"
+    },
+    {
+        "Nome da Cidade": "Bragança",
+        "Temperatura Maxima": 24,
+        "Temperatura Minima": 8,
+        "Direção do vento": "Oeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-25 23:53:37"
+    },
+    {
+        "Nome da Cidade": "Santarém",
+        "Temperatura Maxima": 16,
+        "Temperatura Minima": 6,
+        "Direção do vento": "Oeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 00:02:02"
+    },
+    {
+        "Nome da Cidade": "Évora",
+        "Temperatura Maxima": 26,
+        "Temperatura Minima": 11,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Fraco",
+        "data_pesquisa": "2024-05-26 00:09:03"
+    },
+    {
+        "Nome da Cidade": "Setúbal",
+        "Temperatura Maxima": 25,
+        "Temperatura Minima": 9,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 00:16:08"
+    },
+    {
+        "Nome da Cidade": "Porto",
+        "Temperatura Maxima": 28,
+        "Temperatura Minima": 9,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 00:38:58"
+    },
+    {
+        "Nome da Cidade": "Castelo Branco",
+        "Temperatura Maxima": 21,
+        "Temperatura Minima": 7,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 00:52:30"
+    },
+    {
+        "Nome da Cidade": "Portalegre",
+        "Temperatura Maxima": 23,
+        "Temperatura Minima": 11,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Fraco",
+        "data_pesquisa": "2024-05-26 00:52:38"
+    },
+    {
+        "Nome da Cidade": "Setúbal",
+        "Temperatura Maxima": 25,
+        "Temperatura Minima": 9,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 01:16:17"
+    },
+    {
+        "Nome da Cidade": "Évora",
+        "Temperatura Maxima": 26,
+        "Temperatura Minima": 11,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Fraco",
+        "data_pesquisa": "2024-05-26 01:16:24"
+    },
+    {
+        "Nome da Cidade": "Vila Real",
+        "Temperatura Maxima": 22,
+        "Temperatura Minima": 10,
+        "Direção do vento": "Sudoeste",
+        "Velocidade do vento": "Fraco",
+        "data_pesquisa": "2024-05-26 01:17:50"
+    },
+    {
+        "Nome da Cidade": "Setúbal",
+        "Temperatura Maxima": 25,
+        "Temperatura Minima": 9,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 01:21:30"
+    },
+    {
+        "Nome da Cidade": "Viana do Castelo",
+        "Temperatura Maxima": 21,
+        "Temperatura Minima": 13,
+        "Direção do vento": "Sudoeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 01:22:29"
+    },
+    {
+        "Nome da Cidade": "Évora",
+        "Temperatura Maxima": 26,
+        "Temperatura Minima": 11,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Fraco",
+        "data_pesquisa": "2024-05-26 01:27:17"
+    },
+    {
+        "Nome da Cidade": "Viseu",
+        "Temperatura Maxima": 19,
+        "Temperatura Minima": 11,
+        "Direção do vento": "Sudoeste",
+        "Velocidade do vento": "Fraco",
+        "data_pesquisa": "2024-05-26 01:35:14"
+    },
+    {
+        "Nome da Cidade": "Guarda",
+        "Temperatura Maxima": 28,
+        "Temperatura Minima": 12,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 01:35:33"
+    },
+    {
+        "Nome da Cidade": "Évora",
+        "Temperatura Maxima": 27,
+        "Temperatura Minima": 14,
+        "Direção do vento": "Norte",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 01:37:21"
+    },
+    {
+        "Nome da Cidade": "Guarda",
+        "Temperatura Maxima": 26,
+        "Temperatura Minima": 14,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 01:38:36"
+    },
+    {
+        "Nome da Cidade": "Santarém",
+        "Temperatura Maxima": 16,
+        "Temperatura Minima": 7,
+        "Direção do vento": "Oeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 02:31:00"
+    },
+    {
+        "Nome da Cidade": "Ponta Delgada",
+        "Temperatura Maxima": 22,
+        "Temperatura Minima": 10,
+        "Direção do vento": "Oeste",
+        "Velocidade do vento": "Fraco",
+        "data_pesquisa": "2024-05-26 02:48:08"
+    },
+    {
+        "Nome da Cidade": "Setúbal",
+        "Temperatura Maxima": 25,
+        "Temperatura Minima": 12,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 02:48:56"
+    },
+    {
+        "Nome da Cidade": "Setúbal",
+        "Temperatura Maxima": 25,
+        "Temperatura Minima": 12,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 02:49:02"
+    },
+    {
+        "Nome da Cidade": "Setúbal",
+        "Temperatura Maxima": 25,
+        "Temperatura Minima": 12,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 02:49:06"
+    },
+    {
+        "Nome da Cidade": "Santarém",
+        "Temperatura Maxima": 16,
+        "Temperatura Minima": 7,
+        "Direção do vento": "Noroeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 11:43:02"
+    },
+    {
+        "Nome da Cidade": "Évora",
+        "Temperatura Maxima": 27,
+        "Temperatura Minima": 14,
+        "Direção do vento": "Norte",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 12:15:05"
+    },
+    {
+        "Nome da Cidade": "Setúbal",
+        "Temperatura Maxima": 25,
+        "Temperatura Minima": 13,
+        "Direção do vento": "Oeste",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 12:20:58"
+    },
+    {
+        "Nome da Cidade": "Évora",
+        "Temperatura Maxima": 27,
+        "Temperatura Minima": 14,
+        "Direção do vento": "Norte",
+        "Velocidade do vento": "Moderado",
+        "data_pesquisa": "2024-05-26 12:21:39"
+    }
+]

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleção de Cidade</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <form action="/process_city" method="POST">
+        <label for="city">Cidade:</label>
+        <select id="city" name="city">
+            <option value="1010500">Viana do Castelo</option>
+            <option value="1020500">Braga</option>
+            <option value="1030300">Vila Real</option>
+            <option value="1040200">Bragança</option>
+            <option value="1050200">Porto</option>
+            <option value="1060300">Aveiro</option>
+            <option value="1070500">Coimbra</option>
+            <option value="1080500">Leiria</option>
+            <option value="1081505">Lisboa</option>
+            <option value="1090700">Castelo Branco</option>
+            <option value="1090821">Santarém</option>
+            <option value="1100900">Portalegre</option>
+            <option value="1110600">Lisboa</option>
+            <option value="1121400">Setúbal</option>
+            <option value="1131200">Viseu</option>
+            <option value="1141600">Guarda</option>
+            <option value="1151200">Évora</option>
+            <option value="1151300">Beja</option>
+            <option value="1160900">Faro</option>
+            <option value="1171400">Ponta Delgada</option>
+            <option value="1182300">Funchal</option>
+            <option value="2310300">Madeira</option>
+            <option value="2320100">Porto Santo</option>
+            <option value="3420300">Horta</option>
+            <option value="3430100">Angra do Heroísmo</option>
+            <option value="3470100">Santa Cruz das Flores</option>
+            <option value="3480200">Ponta Delgada (Açores)</option>
+        </select>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <form action="/all_searches" method="GET">
+        <button type="submit">Mostrar Todas as Pesquisas</button>
+    </form>
+
+    <form action="/search_by_date" method="POST">
+        <label for="date">Data:</label>
+        <input type="date" id="date" name="date">
+        <button type="submit">Mostrar Pesquisas por Data</button>
+    </form>
+
+    <form action="/search_by_city" method="POST">
+        <label for="city_name">Cidade:</label>
+        <select id="city_name" name="city_name">
+            <option value="Viana do Castelo">Viana do Castelo</option>
+            <option value="Braga">Braga</option>
+            <option value="Vila Real">Vila Real</option>
+            <option value="Bragança">Bragança</option>
+            <option value="Porto">Porto</option>
+            <option value="Aveiro">Aveiro</option>
+            <option value="Coimbra">Coimbra</option>
+            <option value="Leiria">Leiria</option>
+            <option value="Lisboa">Lisboa</option>
+            <option value="Castelo Branco">Castelo Branco</option>
+            <option value="Santarém">Santarém</option>
+            <option value="Portalegre">Portalegre</option>
+            <option value="Setúbal">Setúbal</option>
+            <option value="Viseu">Viseu</option>
+            <option value="Guarda">Guarda</option>
+            <option value="Évora">Évora</option>
+            <option value="Beja">Beja</option>
+            <option value="Faro">Faro</option>
+            <option value="Ponta Delgada">Ponta Delgada</option>
+            <option value="Funchal">Funchal</option>
+            <option value="Madeira">Madeira</option>
+            <option value="Porto Santo">Porto Santo</option>
+            <option value="Horta">Horta</option>
+            <option value="Angra do Heroísmo">Angra do Heroísmo</option>
+            <option value="Santa Cruz das Flores">Santa Cruz das Flores</option>
+            <option value="Ponta Delgada (Açores)">Ponta Delgada (Açores)</option>
+        </select>
+        <button type="submit">Mostrar Pesquisas por Cidade</button>
+    </form>
+</body>
+</html>
