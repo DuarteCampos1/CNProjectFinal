@@ -8,9 +8,10 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    color: #000; /* Texto padrão em preto */
 }
 
 form {
@@ -53,4 +54,82 @@ button {
 
 button:hover {
     background-color: #4cae4c;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+    color: white; /* Título em branco */
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 20px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.result {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: calc(33.33% - 20px); /* Três resultados por linha */
+    box-sizing: border-box;
+    color: white; /* Texto das respostas em branco */
+}
+
+.result p {
+    color: white; /* Texto das respostas em branco */
+}
+
+a {
+    margin-top: 10px;
+    color: #fff;
+    text-decoration: none;
+    background-color: #007bff;
+    padding: 5px 10px;
+    margin: 0 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #f00;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 10px 0;
+}
+
+.pagination a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #007bff;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+    color: #fff;
 }
