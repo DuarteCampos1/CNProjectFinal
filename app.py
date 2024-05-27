@@ -1,7 +1,9 @@
-from flask import Flask, request, render_template, jsonify
-import requests
 import json
+import os
 from datetime import datetime
+
+import requests
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -56,9 +58,11 @@ wind_speed_classes = {
     5: "Tempestuoso"
 }
 
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
+
 
 @app.route('/process_city', methods=['POST'])
 def process_city():
@@ -70,151 +74,157 @@ def process_city():
     city_name = cities.get(int(city_id), "Cidade desconhecida")
     tMax = forecast_data['tMax']
     tMin = forecast_data['tMin']
-    predWindDir = direcoes.get(forecast_data['predWindDir'], "Direção desconhecida")
+    preWindDir = direcoes.get(forecast_data['predWindDir'], "Direção desconhecida")
     wind_speed_class = wind_speed_classes.get(forecast_data['classWindSpeed'], "Classificação desconhecida")
 
     pesquisa = {
         "Nome da Cidade": city_name,
         "Temperatura Maxima": tMax,
         "Temperatura Minima": tMin,
-        "Direção do vento": predWindDir,
-        "Velocidade do vento": wind_speed_class
+        "Direção do vento": preWindDir,
+        "Velocidade do vento": wind_speed_class,
+        "data_pesquisa": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
+
+    # Garantir que o diretório json exista
+    os.makedirs("json", exist_ok=True)
 
     # Abrir ou criar o arquivo JSON
     try:
-        with open("CNProjeto/json/bd.json", "r", encoding="utf-8") as file:
+        with open("json/bd.json", "r", encoding="utf-8") as file:
             data = json.load(file)
     except FileNotFoundError:
         data = []
 
     # Adicionar a pesquisa ao arquivo JSON
-    pesquisa["data_pesquisa"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     data.append(pesquisa)
 
-    with open("CNProjeto/json/bd.json", "w", encoding="utf-8") as file:
+    with open("json/bd.json", "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
 
     if response.status_code == 200:
-        forecastDate = data.get('forecastDate', 'Data não disponível')
-
-        html_response = f'''
-        <!DOCTYPE html>
-        <html lang="pt-PT">
-        <head>
-            <meta charset="UTF-8">
-            <title>Previsão do Tempo para {city_name}</title>
-        </head>
-        <body>
-            <h1>Previsão do Tempo para {city_name}</h1>
-            <p>Data da Previsão: {forecastDate}</p>
-            <p>Temperatura Máxima: {tMax}°C</p>
-            <p>Temperatura Mínima: {tMin}°C</p>
-            <p>Direção do Vento: {predWindDir}</p>
-            <p>Velocidade do Vento: {wind_speed_class}</p>
-            <form action="/">
-                <button type="submit">Voltar ao Formulário</button>
-            </form>
-        </body>
-        </html>
-        '''
+        return render_template("city_result.html", city_name=city_name, forecast=forecast_data, preWindDir=preWindDir,
+                               wind_speed_class=wind_speed_class)
     else:
-        html_response = f'''
-        <!DOCTYPE html>
-        <html lang="pt-PT">
-        <head>
-            <meta charset="UTF-8">
-            <title>Erro</title>
-        </head>
-        <body>
-            <h1>Erro</h1>
-            <p>Erro ao acessar a API: {response.status_code}</p>
-            <form action="/">
-                <button type="submit">Voltar ao Formulário</button>
-            </form>
-        </body>
-        </html>
-        '''
+        return render_template("error.html", error_code=response.status_code)
 
-    return render_template_string(html_response)
 
 @app.route('/all_searches', methods=['GET'])
 def all_searches():
     try:
-        with open("CNProjeto/json/bd.json", "r", encoding="utf-8") as file:
+        with open("json/bd.json", "r", encoding="utf-8") as file:
             data = json.load(file)
     except FileNotFoundError:
         data = []
 
-    html_response = '''
-    <!DOCTYPE html>
-    <html lang="pt-PT">
-    <head>
-        <meta charset="UTF-8">
-        <title>Todas as Pesquisas</title>
-    </head>
-    <body>
-        <h1>Todas as Pesquisas</h1>
-        <ul>
-    '''
-    for search in data:
-        html_response += f"<li>{search}</li>"
-    html_response += '''
-        </ul>
-        <form action="/">
-            <button type="submit">Voltar ao Formulário</button>
-        </form>
-    </body>
-    </html>
-    '''
-    return render_template_string(html_response)
+    page = request.args.get('page', 1, type=int)
+    per_page = 6  # Número de resultados por página
+    total_results = len(data)
+    total_pages = (total_results + per_page - 1) // per_page  # Cálculo do total de páginas
 
-@app.route('/search_by_date', methods=['POST'])
+    start = (page - 1) * per_page
+    end = start + per_page
+    results_to_show = data[start:end]
+
+    return render_template(
+        "search_results.html",
+        searches=results_to_show,
+        total_pages=total_pages,
+        current_page=page,
+        page_title="Todos os Resultados",
+        criteria=""
+    )
+
+
+@app.route('/search_by_date', methods=['POST', 'GET'])
 def search_by_date():
-    date = request.form['date']
+    if request.method == 'POST':
+        date = request.form['date']
+    else:
+        date = request.args.get('date')
+
     try:
-        with open("CNProjeto/json/bd.json", "r", encoding="utf-8") as file:
+        with open("json/bd.json", "r", encoding="utf-8") as file:
             data = json.load(file)
     except FileNotFoundError:
         data = []
 
     filtered_data = [search for search in data if search["data_pesquisa"].startswith(date)]
 
-    html_response = '''
-    <!DOCTYPE html>
-    <html lang="pt-PT">
-    <head>
-        <meta charset="UTF-8">
-        <title>Pesquisas por Data</title>
-    </head>
-    <body>
-        <h1>Pesquisas por Data</h1>
-        <ul>
-    '''
-    for search in filtered_data:
-        html_response += f"<li>{search}</li>"
-    html_response += '''
-        </ul>
-        <form action="/">
-            <button type="submit">Voltar ao Formulário</button>
-        </form>
-    </body>
-    </html>
-    '''
-    return render_template_string(html_response)
+    # Contador de pesquisas por cidade
+    city_counts = {}
+    unique_results = []
+    seen_cities = set()
 
-@app.route('/search_by_city', methods=['POST'])
+    for search in filtered_data:
+        city = search["Nome da Cidade"]
+        if city in city_counts:
+            city_counts[city] += 1
+        else:
+            city_counts[city] = 1
+            if city not in seen_cities:
+                unique_results.append(search)
+                seen_cities.add(city)
+
+    # Paginação
+    page = request.args.get('page', 1, type=int)
+    per_page = 6
+    total_results = len(unique_results)
+    total_pages = (total_results + per_page - 1) // per_page
+
+    start = (page - 1) * per_page
+    end = start + per_page
+    results_to_show = unique_results[start:end]
+
+    return render_template(
+        "search_results.html",
+        searches=results_to_show,
+        total_pages=total_pages,
+        current_page=page,
+        criteria=f"Data: {date}",
+        city_counts=city_counts,
+        page_title=f"Resultados da Pesquisa no Dia: {date}",
+        date=date,  # Passando o valor de date para o template
+        is_date_search=True  # Indicando que a pesquisa é por data
+    )
+
+
+@app.route('/search_by_city', methods=['POST', 'GET'])
 def search_by_city():
-    city_name = request.form['city_name']
+    if request.method == 'POST':
+        city_name = request.form['city_name']
+    else:
+        city_name = request.args.get('city_name')
+
     try:
-        with open("CNProjeto/json/bd.json", "r", encoding="utf-8") as file:
+        with open("json/bd.json", "r", encoding="utf-8") as file:
             data = json.load(file)
     except FileNotFoundError:
         data = []
 
     filtered_data = [search for search in data if search["Nome da Cidade"] == city_name]
 
-    html_response = '''
-    <!DOCTYPE html>
-    <html lang="pt-PT">
-    <head>
+    # Paginação
+    page = request.args.get('page', 1, type=int)
+    per_page = 6
+    total_results = len(filtered_data)
+    total_pages = (total_results + per_page - 1) // per_page
+
+    start = (page - 1) * per_page
+    end = start + per_page
+    results_to_show = filtered_data[start:end]
+
+    return render_template(
+        "search_results.html",
+        searches=results_to_show,
+        total_pages=total_pages,
+        current_page=page,
+        criteria=f"Cidade: {city_name}",
+        page_title=f"Resultados da Pesquisa na Cidade: {city_name}",
+        city_name=city_name,
+        is_date_search=False  # Indicando que a pesquisa não é por data
+    )
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))

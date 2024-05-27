@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <form action="/process_city" method="POST">
+    <form action="{{ url_for('process_city') }}" method="POST">
         <label for="city">Cidade:</label>
         <select id="city" name="city">
             <option value="1010500">Viana do Castelo</option>
@@ -40,17 +40,17 @@
         <button type="submit">Enviar</button>
     </form>
 
-    <form action="/all_searches" method="GET">
+    <form action="{{ url_for('all_searches') }}" method="GET">
         <button type="submit">Mostrar Todas as Pesquisas</button>
     </form>
 
-    <form action="/search_by_date" method="POST">
+    <form action="{{ url_for('search_by_date') }}" method="POST">
         <label for="date">Data:</label>
         <input type="date" id="date" name="date">
         <button type="submit">Mostrar Pesquisas por Data</button>
     </form>
 
-    <form action="/search_by_city" method="POST">
+    <form action="{{ url_for('search_by_city') }}" method="POST">
         <label for="city_name">Cidade:</label>
         <select id="city_name" name="city_name">
             <option value="Viana do Castelo">Viana do Castelo</option>

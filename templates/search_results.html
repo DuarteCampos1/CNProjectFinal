@@ -2,14 +2,20 @@
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
-    <title>Todas as Pesquisas</title>
+    <title>{{ page_title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header>
-        <h1>Todas as Pesquisas</h1>
+        <h1>{{ page_title }}</h1>
+        {% if is_date_search %}
+
+        {% endif %}
     </header>
     <div class="container">
+        {% if criteria %}
+
+        {% endif %}
         {% for search in searches %}
         <div class="result">
             <p>Cidade: {{ search["Nome da Cidade"] }}</p>
@@ -17,10 +23,28 @@
             <p>Temperatura Mínima: {{ search["Temperatura Minima"] }} °C</p>
             <p>Direção do Vento: {{ search["Direção do vento"] }}</p>
             <p>Velocidade do Vento: {{ search["Velocidade do vento"] }}</p>
+            {% if not is_date_search %}
             <p>Data da Pesquisa: {{ search["data_pesquisa"] }}</p>
+            {% endif %}
+            {% if city_counts and is_date_search %}
+            <p>Total de Pesquisas neste dia: {{ city_counts[search["Nome da Cidade"]] }}</p>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
+
+    <div class="pagination">
+        {% if current_page > 1 %}
+        <a href="{{ url_for(request.endpoint, page=current_page-1, date=date, city_name=city_name) }}">Anterior</a>
+        {% endif %}
+        {% for page_num in range(1, total_pages + 1) %}
+        <a href="{{ url_for(request.endpoint, page=page_num, date=date, city_name=city_name) }}">{{ page_num }}</a>
+        {% endfor %}
+        {% if current_page < total_pages %}
+        <a href="{{ url_for(request.endpoint, page=current_page+1, date=date, city_name=city_name) }}">Próxima</a>
+        {% endif %}
+    </div>
+
     <a href="/">Voltar</a>
 </body>
 </html>
