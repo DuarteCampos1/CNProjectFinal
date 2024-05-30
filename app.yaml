@@ -1,0 +1,15 @@
+runtime: python311
+
+instance_class: F2
+
+env_variables:
+  GOOGLE_APPLICATION_CREDENTIALS: "json/cnprojetofinal-6b05b25fe24e.json"
+
+entrypoint: waitress-serve --port=$PORT app:app
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /.*
+  script: auto
